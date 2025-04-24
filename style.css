@@ -1,16 +1,29 @@
 a:link {
     color: blue;
-    text-decoration: none;
-  }
-  
-  a:visited {
-    color: purple;
-  }
-  
-  h1 {
-    border-bottom: 5px solid red;
-  }
+}
+a:visited {
+  color: purple;
+}
 
-  p {
-    color: red;
-  }
+a:hover {
+  text-decoration: none;
+}
+  
+h1 {
+    border-bottom: 5px solid red;
+}
+
+h2 {
+    border-bottom: 5px solid linear-gradient(90deg, red, #ffffff);
+}
+
+
+.ran {
+  border: 5px solid rgb(255, 224, 255);
+  padding: 20px 30px 30px 20px;
+}
+
+div {
+    border: 5px solid rgb(255, 224, 255);
+  padding: 20px 30px 30px 20px;
+}
