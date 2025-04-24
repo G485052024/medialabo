@@ -1,0 +1,16 @@
+a:link {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: purple;
+  }
+  
+  h1 {
+    border-bottom: 5px solid red;
+  }
+
+  p {
+    color: red;
+  }
