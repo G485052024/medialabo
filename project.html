@@ -7,6 +7,22 @@
     <script src="tv-program.js" defer></script>
   </head>
   <body>
+    <h1>番組の検索結果</h1>
+    <p>
+      <label for="channelnumber">チャンネル: </label>
+      <select  name="channelnumber" id="channelnumber">
+        <option value="">チャンネルを選択してください</option>
+        <option value="g1">NHK総合1</option>
+        <option value="e1">Eテレ1</option>
+      </select>
+      <label for="channelgenru">ジャンル: </label>
+      <select  name="channelgenru" id="channelgenru">
+        <option value="">ジャンルを選択してください</option>
+        <option value="0502">バラエティ</option>
+        <option value="0000">ニュース</option>
+      </select>
+      <button id="kensaku">検索</button>
+    </p>
     <ul><div><h3>午後7:30~</h3>
         <li>番組タイトル：あしたが変わるトリセツショー「体重」の新・健康リスク！筋肉・骨が喜ぶ対策</li>
         <li>出演者：【司会】石原さとみ，【ゲスト】足立梨花，伊藤俊介（オズワルド），【声】濱田マリ，峯田茉優，【語り】山路和弘</li>
