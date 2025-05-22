@@ -1,13 +1,36 @@
 
 // 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
-  for(n of data.list.g1)
-  console.log(n);
+  
+  console.log(data.list.g1[0].start_time);
+  console.log(data.list.g1[0].end_time);
+  console.log(data.list.g1[0].area.name);
+  console.log(data.list.g1[0].service.name);
+  console.log(data.list.g1[0].title);
+  console.log(data.list.g1[0].subtitle);
 
 }
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+
+  let d = document.querySelector('div#result');
+  let u = document.createElement('ul');
+  let l = document.createElement('li');
+  let p = document.createElement('p');
+  d.insertAdjacentElement('beforeend', p);
+  d.insertAdjacentElement('beforeend', u);
+  u.insertAdjacentElement('beforeend', l);
+  l.textContent = "チャンネル:" +  data.list.g1[0].service.name;
+  l = document.createElement('li');
+  u.insertAdjacentElement('beforeend', l);
+  l.textContent = "番組タイトル:" +  data.list.g1[0].title;
+  l = document.createElement('li');
+  u.insertAdjacentElement('beforeend', l);
+  l.textContent = "開始時刻:" +  data.list.g1[0].start_time;
+  l = document.createElement('li');
+  u.insertAdjacentElement('beforeend', l);
+  l.textContent = "終了時刻:" +  data.list.g1[0].end_time;
 
 }
 
