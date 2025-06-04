@@ -14,44 +14,130 @@ function print(data) {
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
 
-  let d = document.querySelector('div#result');
-  let u = document.createElement('ul');
-  let l = document.createElement('li');
+  let b = document.querySelector('body');
+  let d = document.createElement('div');
+  d.id = 'result';
+  b.insertAdjacentElement('beforeend', d);
+  
+  d = document.querySelector('div#result');
+  let s = document.querySelector('select#channelnumber');
+    let idx = s.selectedIndex;  // idx 番目の option が選択され
+    let os = s.querySelectorAll('option');  // s の子要素 option をすべて検索
+    let ser = os.item(idx);
+    let serv = ser.getAttribute('value');
+    let g = document.querySelector('select#channelgenru');
+    idx = g.selectedIndex;  // idx 番目の option が選択され
+    let og = g.querySelectorAll('option');  // s の子要素 option をすべて検索
+    let gen = og.item(idx);
+    let genv = gen.getAttribute('value');
+  let l;
   let p = document.createElement('p');
   d.insertAdjacentElement('beforeend', p);
-  d.insertAdjacentElement('beforeend', u);
-  u.insertAdjacentElement('beforeend', l);
-  l.textContent = "チャンネル:" +  data.list.g1[0].service.name;
-  l = document.createElement('li');
-  u.insertAdjacentElement('beforeend', l);
-  l.textContent = "番組タイトル:" +  data.list.g1[0].title;
-  l = document.createElement('li');
-  u.insertAdjacentElement('beforeend', l);
-  l.textContent = "開始時刻:" +  data.list.g1[0].start_time;
-  l = document.createElement('li');
-  u.insertAdjacentElement('beforeend', l);
-  l.textContent = "終了時刻:" +  data.list.g1[0].end_time;
+  if(serv=="g1"){
+  for(let n of data.list.g1){
+    let u = document.createElement('ul');
+    d.insertAdjacentElement('beforeend', u);
+    u.id = 'g1';
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+	  l.textContent = "チャンネル:" +  n.service.name;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "番組タイトル:" +  n.title;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "開始時刻:" +  n.start_time;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "終了時刻:" +  n.end_time;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "番組説明:" +  n.content;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "出演者:" +  n.act;
+  }
+  }else if(serv=="e1"){
+    for(let n of data.list.e1){
+    let u = document.createElement('ul');
+    d.insertAdjacentElement('beforeend', u);
+    u.id = 'e1';
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+	  l.textContent = "チャンネル:" +  n.service.name;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "番組タイトル:" +  n.title;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "開始時刻:" +  n.start_time;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "終了時刻:" +  n.end_time;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "番組説明:" +  n.content;
+    l = document.createElement('li');
+    u.insertAdjacentElement('beforeend', l);
+    l.textContent = "出演者:" +  n.act;
+  }
+
+  }
+
 
 }
 
-// 課題5-1 のイベントハンドラの定義
-function show() {
+// 6-1 のイベントハンドラ登録処理は以下に記述
 
-}
-
-// 課題5-1, 6-1 のイベントハンドラ登録処理は以下に記述
-
+let b = document.querySelector('#sendRequest');
+b.addEventListener('click', sendRequest);
 
 
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
+    // URL を設定
+    let s = document.querySelector('select#channelnumber');
+    let idx = s.selectedIndex;  // idx 番目の option が選択され
+    let os = s.querySelectorAll('option');  // s の子要素 option をすべて検索
+    let ser = os.item(idx);
+    let serv = ser.getAttribute('value');
+    let g = document.querySelector('select#channelgenru');
+    idx = g.selectedIndex;  // idx 番目の option が選択され
+    let og = g.querySelectorAll('option');  // s の子要素 option をすべて検索
+    let gen = og.item(idx);
+    let genv = gen.getAttribute('value');
+    let url = 'https://www.nishita-lab.org/web-contents/jsons/nhk/' + serv + '-' + genv + '-j.json';
+    let d = document.querySelector('div#result');
+    d.remove();
 
+    // 通信開始
+    axios.get(url)
+        .then(showResult)   // 通信成功
+        .catch(showError)   // 通信失敗
+        .then(finish);      // 通信の最後の処理
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
+  // サーバから送られてきたデータを出力
+    let data = resp.data;
 
+    // data が文字列型なら，オブジェクトに変換する
+    if (typeof data === 'string') {
+        data = JSON.parse(data);
+    }
+
+    // data をコンソールに出力
+    console.log(data);
+
+    // data.x を出力
+    console.log(data.x);
+
+
+    printDom(data);
+
+      
 }
 
 // 課題6-1: 通信エラーが発生した時の処理

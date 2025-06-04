@@ -1,8 +1,38 @@
-h3 {
+body {
+    background-color:rgb(26, 26, 26);
+}
+
+h1 {
+	color: white;
+	text-shadow: rgb(255, 55, 55) 1px 0 10px;
+    background: linear-gradient(45deg, rgb(58, 58, 58), rgb(26,26,26));
+    padding-left: 10px;
+}
+
+label {
     color:red;
 }
 
-div {
-    border: 5px solid rgb(255, 224, 255);
-    padding: 20px 30px 30px 20px;
+div#result {
+    padding: 5px;
+	background-color: rgb(58, 58, 58);
   }
+
+div#gray {
+	padding: 10px;
+	background: linear-gradient(45deg, rgb(58, 58, 58), rgb(26,26,26));
+}
+
+div#result > ul#g1 {
+    color:white;
+	padding: 5px;
+    background: linear-gradient(25deg, #d60000, rgb(58,58,58));
+    padding-left: 20px;
+}
+
+div#result > ul#e1 {
+    color:white;
+	padding: 5px;
+    background: linear-gradient(25deg, #31833d, rgb(58,58,58));
+    padding-left: 20px;
+}

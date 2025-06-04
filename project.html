@@ -4,27 +4,39 @@
     <meta charset="utf-8">
     <title>My test page</title>
     <link rel="stylesheet" href="project-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
     <script src="tv-program.js" defer></script>
   </head>
   <body>
     <h1>番組の検索結果</h1>
     <p>
+      <div id="gray">
       <label for="channelnumber">チャンネル: </label>
       <select  name="channelnumber" id="channelnumber">
         <option value="">チャンネルを選択してください</option>
-        <option value="g1">NHK総合1</option>
-        <option value="e1">Eテレ1</option>
+        <option id="service" value="g1">NHK総合1</option>
+        <option id="service" value="e1">Eテレ1</option>
       </select>
       <label for="channelgenru">ジャンル: </label>
       <select  name="channelgenru" id="channelgenru">
         <option value="">ジャンルを選択してください</option>
-        <option value="0502">バラエティ</option>
-        <option value="0000">ニュース</option>
+        <option id="genre" value="0000">ニュース</option>
+        <option id="genre" value="0100">スポーツ</option>
+        <option id="genre" value="0205">情報・ワイドショー</option>
+        <option id="genre" value="0300">ドラマ</option>
+        <option id="genre" value="0409">音楽</option>
+        <option id="genre" value="0502">バラエティ</option>
+        <option id="genre" value="0600">映画</option>
+        <option id="genre" value="0700">アニメ</option>
+        <option id="genre" value="0800">ドキュメンタリー・教養</option>
+        <option id="genre" value="1000">趣味・教育</option>
+        <option id="genre" value="1100">福祉</option>
       </select>
-      <button id="kensaku">検索</button>
+      <button id="sendRequest">検索</button>
+      </div>
     </p>
     
-        <div id="result"></div>
+        <div id="result">ここに検索結果が表示されます</div>
 
   </body>
 </html>
